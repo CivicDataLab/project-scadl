@@ -25,7 +25,7 @@ for(i in 1:nrow(wards_complaints_df)){
   ward_i <- wards_complaints_df$ward_names[[i]]
   problem_i <- wards_complaints_df$problem[[i]]
   ward_complaints <- data_file[data_file$Ward == ward_i &
-                                 data_file$re_categ == problem_i, ]
+                                 data_file$re_re_categ == problem_i, ]
   ward_complaints <- ward_complaints[!is.na(ward_complaints$Ward),] 
   addr <- ward_complaints$cleaned_address
   addr_phrase <-
@@ -41,7 +41,18 @@ for(i in 1:nrow(wards_complaints_df)){
   word_with_numbers <-
     word_count$phrase[grepl("^[0-9]+", x = word_count$phrase)] %>% as.character() %>% unlist()
   word_count <- word_count[!word_count$phrase %in% word_with_numbers,]
-  word_count <- word_count[!word_count$phrase %in% c(ward_i,"North","South","Central","East","South West","South East","West"),]
+  word_count <-
+    word_count[!word_count$phrase %in% c(ward_i,
+                                         "North",
+                                         "South",
+                                         "Central",
+                                         "East",
+                                         "South West",
+                                         "South East",
+                                         "West",
+                                         "Market"), ]
+
+  word_count$Freq <- word_count$Freq + 2^word_count$Freq
   pal <- brewer.pal(8,"Dark2")
   file_name <- glue::glue("{ward_i}_{stringr::str_replace(problem_i,' ','_')}.png") 
   viz_path <- glue::glue("viz/220823/wordcloud/{file_name}")
@@ -53,7 +64,7 @@ for(i in 1:nrow(wards_complaints_df)){
     with(wordcloud(
       phrase,
       Freq,
-      random.order = FALSE,
+      random.order = TRUE,
       colors = pal,
       max.words = 50
     ))
