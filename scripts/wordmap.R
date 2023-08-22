@@ -50,7 +50,7 @@ for(i in 1:nrow(wards_complaints_df)){
       Freq,
       random.order = FALSE,
       colors = pal,
-      max.words = 50
+      max.words = 100
     ))
   
   # Close the graphics device
