@@ -12,7 +12,7 @@ wards_complaints_df <- data.frame(
       "Jamalpur",
       "Chandkheda Motera",
       "Lambha",
-      "Behrampura"    ),
+      "Behrampura"),
   "problem" = c(
     rep("Drainage", 3),
     rep("Water Supply", 3)  
@@ -29,9 +29,14 @@ for(i in 1:nrow(wards_complaints_df)){
   ward_complaints <- ward_complaints[!is.na(ward_complaints$Ward),] 
   addr <- ward_complaints$cleaned_address
   addr_phrase <-
-    stringr::str_split(addr, pattern = ",", simplify = FALSE)  %>% unlist() %>% str_trim()
-  addr_phrase <- addr_phrase[!addr_phrase %in% c(""," ")]
-  word_count <- addr_phrase %>% table() %>% data.frame() %>% arrange(desc(Freq))
+    stringr::str_split(addr, pattern = ",", simplify = FALSE) 
+  
+  # Only consider first two words from each address
+  addr_phrase_2 <- lapply(addr_phrase, function(vec) vec[1:2])
+  
+  addr_phrase_2 <- addr_phrase_2 %>% unlist() %>% str_trim()
+  addr_phrase_2 <- addr_phrase_2[!addr_phrase_2 %in% c(""," ")]
+  word_count <- addr_phrase_2 %>% table() %>% data.frame() %>% arrange(desc(Freq))
   names(word_count)[1] <- "phrase"
   word_with_numbers <-
     word_count$phrase[grepl("^[0-9]+", x = word_count$phrase)] %>% as.character() %>% unlist()
@@ -50,7 +55,7 @@ for(i in 1:nrow(wards_complaints_df)){
       Freq,
       random.order = FALSE,
       colors = pal,
-      max.words = 100
+      max.words = 50
     ))
   
   # Close the graphics device
