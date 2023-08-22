@@ -24,6 +24,18 @@ for(i in 1:length(categories_for_viz)){
     group_by(Zone, Problem_recat, week) %>% 
     summarise(complaints = n()) %>% data.frame(check.names = FALSE)
   
+  # Only consider top 4 complaints
+  viz_data_filter <-
+    viz_data %>%
+    group_by(Problem_recat) %>%
+    summarise(total = sum(complaints)) %>%
+    arrange(desc(total)) %>%
+    head(4) %>%
+    pull(Problem_recat)
+  
+  viz_data <-
+    viz_data[viz_data$Problem_recat %in% viz_data_filter, ]
+  
   problem_order <- viz_data %>%
     group_by(Problem_recat) %>%
     summarize(total_complaints = sum(complaints)) %>%
