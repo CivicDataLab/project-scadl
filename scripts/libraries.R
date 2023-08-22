@@ -1,0 +1,6 @@
+library(dplyr)
+library(stringr)
+library(glue)
+library(readr)
+library(wordcloud)
+library(tidytext)
