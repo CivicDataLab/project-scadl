@@ -1,9 +1,8 @@
 source("scripts/vars.R")
+source("scripts/read_complaints_sheet.R")
 source("scripts/libraries.R")
 
-# data_file <- googlesheets4::read_sheet(ss = data_url_aug_week_3)
-data_file <- readr::read_csv("data/21082023/raw-data.csv")
-# write_csv(data_file,"data/21082023/raw-data.csv")
+data_file <- readr::read_csv("data/21082023/raw_data_sheet.csv")
 
 #Assign a primary key
 data_file$pid <- 1:nrow(data_file)
