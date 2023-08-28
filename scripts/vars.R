@@ -14,6 +14,9 @@ previous_data_shared_on <- "21082023"
 new_categories_file_path <-
   "https://docs.google.com/spreadsheets/d/19LNgYOz4J3m41qP-3yNV_tJyWgW_vZLzqFeTYE8FhIo/edit" 
 
+ward_population_file_path <-
+  "https://docs.google.com/spreadsheets/d/1HfgnIr1TJzDlFRpe2nDIsctiMS2fVjMuiGIyjo22mTY/edit"
+
 ward_numbers <- data.frame(
   stringsAsFactors = FALSE,
                               ward = c("ASARVA","JAMALPUR","SARASPUR",
