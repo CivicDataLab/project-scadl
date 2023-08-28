@@ -1,49 +1,42 @@
-source("scripts/vars.R")
-source("scripts/read_complaints_sheet.R")
-source("scripts/libraries.R")
-
-data_file <- readr::read_csv("data/21082023/raw_data_sheet.csv")
-
-#Assign a primary key
-data_file$pid <- 1:nrow(data_file)
-
-address_df <- data_file[,c("pid","Address")]
-
-# Remove ID's where address is not available
-address_df <- address_df[!is.na(address_df$Address),]
-to_remove <- c("Ahmedabad", "Gujarat", "India")
-pattern <- paste(to_remove, collapse = "|")
-
-clean_address <- function(address_row){
-  # sample(nrow(address_df),1)
-  # address_row <- address_df$Address[[9]]
-  detect_comma <- stringr::str_detect(address_row, pattern = ",")
-  if(detect_comma) {
-    add_split <-
-      str_split(address_row, pattern = ",") %>%
-      unlist() %>%
-      stringr::str_trim() %>%
-      stringr::str_to_title()
-  } else {
-    add_split <-
-      str_split(address_row, pattern = " ") %>%
-      unlist() %>%
-      stringr::str_trim() %>%
-      stringr::str_to_title()
+update_address_col <- function(data_file){
+  
+  clean_address <- function(address_row){
+    # sample(nrow(address_df),1)
+    # address_row <- address_df$Address[[9]]
+    detect_comma <- stringr::str_detect(address_row, pattern = ",")
+    if(detect_comma) {
+      add_split <-
+        str_split(address_row, pattern = ",") %>%
+        unlist() %>%
+        stringr::str_trim() %>%
+        stringr::str_to_title()
+    } else {
+      add_split <-
+        str_split(address_row, pattern = " ") %>%
+        unlist() %>%
+        stringr::str_trim() %>%
+        stringr::str_to_title()
+    }
+    
+    matches <- grep(pattern_to_remove, add_split, value = TRUE)
+    add_split <- add_split[!add_split %in% matches]
+    # print(add_split)
+    add_merge <- paste0(add_split,collapse = ", ")
+    return(add_merge)
   }
-  matches <- grep(pattern, add_split, value = TRUE)
-  add_split <- add_split[!add_split %in% matches]
-  # print(add_split)
-  add_merge <- paste0(add_split,collapse = ", ")
-  return(add_merge)
+  
+  # data_file <- raw_data_sub
+  address_df <- data_file[,c("pid","address")]  
+  # Remove ID's where address is not available
+  address_df <- address_df[!is.na(address_df$address),]
+  
+  to_remove <- c("Ahmedabad", "Gujarat", "India")
+  pattern_to_remove <- paste(to_remove, collapse = "|")
+
+  address_df <-
+    address_df %>%
+    rowwise() %>%
+    mutate(cleaned_address = clean_address(address))
+  
+  return(address_df)
 }
-
-address_df <-
-  address_df %>%
-  rowwise() %>%
-  mutate(cleaned_address = clean_address(Address))
-
-processed_data <-
-  left_join(data_file, address_df[, c("pid", "cleaned_address")], by = "pid")
-
-readr::write_csv(processed_data, "data/21082023/cleaned_address.csv")
