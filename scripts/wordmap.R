@@ -37,6 +37,9 @@ wards_complaints_df <- data.frame(
 wards_complaints_df$ward_names <-
   stringr::str_to_lower(wards_complaints_df$ward_names)
 
+# For storing word count values
+word_count_df <- c()
+
 for(i in 1:nrow(wards_complaints_df)) {
   ward_i <- wards_complaints_df$ward_names[[i]]
   problem_i <- wards_complaints_df$problem[[i]]
@@ -73,6 +76,11 @@ for(i in 1:nrow(wards_complaints_df)) {
       stringr::str_to_title(ward_i)
     ),]
   
+  # Updating the word count data frame
+  word_count$ward <- ward_i
+  word_count$new_category <- problem_i
+  word_count_df <- dplyr::bind_rows(word_count_df, word_count)
+  
   word_count$Freq <- word_count$Freq + 2 ^ word_count$Freq
   pal <- brewer.pal(8, "Dark2")
   file_name <-
@@ -100,3 +108,5 @@ for(i in 1:nrow(wards_complaints_df)) {
   
 }
 
+word_count_df_path <- glue::glue("data/{data_shared_on}/word_counts.csv")
+readr::write_csv(word_count_df, word_count_df_path)
