@@ -3,7 +3,7 @@ source("scripts/vars.R")
 
 # Read data
 processed_data_path <-
-  glue::glue("data/{data_shared_on}/appended_data_sheet.csv")
+  glue::glue("data/{data_shared_on}/processed_data_sheet.csv")
 
 data_file <- readr::read_csv(processed_data_path)
 
@@ -62,7 +62,6 @@ for(i in 1:nrow(wards_complaints_df)) {
     word_count[!word_count$phrase %in% word_with_numbers, ]
   word_count <-
     word_count[!word_count$phrase %in% c(
-      ward_i,
       "North",
       "South",
       "Central",
@@ -92,6 +91,7 @@ for(i in 1:nrow(wards_complaints_df)) {
       Freq,
       random.order = TRUE,
       colors = pal,
+      scale = c(2,0.5),
       max.words = 50
     ))
   
