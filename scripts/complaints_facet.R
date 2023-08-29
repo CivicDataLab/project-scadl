@@ -7,14 +7,18 @@ processed_data_path <-
 data_for_viz <- read_csv(processed_data_path)
 
 # Filter data for selected categories
-data_for_viz_sub <- data_for_viz[data_for_viz$new_category %in% c("Drainage","Roads","Sanitation","Water Supply"),]
+data_for_viz_sub <- data_for_viz[data_for_viz$new_category %in% c("Drainage","Public lighting","Sanitation","Water Supply"),]
 
 vars_to_use <-
   c("new_category", "zone", "problem_category", "problem", "week")
 
 data <- data_for_viz_sub[,vars_to_use]
 
-data <- left_join(data, problem_df, by="problem")
+# Recategorising problems
+problem_df <-
+  googlesheets4::read_sheet(ss = new_categories_file_path, sheet = "renaming-complaint")
+
+data <- left_join(data, problem_df, by=c("new_category","problem"))
 
 
 data <- data[!is.na(data$problem_recat),]
