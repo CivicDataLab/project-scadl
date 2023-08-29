@@ -1,4 +1,4 @@
-## Tracking complaints for Smart City Ahmedabad Development Limited (SCADL)
+## Tracking citizen complaints for Smart City Ahmedabad Development Limited (SCADL)
 
 The SCADL team shares a weekly data dump of complaints registered by citizens across all wards and zones in Ahmedabad. We analyse this dataset and prepare a analysis slide deck. This slide deck is then shared back with SCADL. All slide decks are available [here](https://drive.google.com/drive/folders/1A8dWwY2NhHAZs3M3WAPYyacdQvPm4lH_)
 
