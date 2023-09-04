@@ -16,20 +16,20 @@ wards_complaints_df <- data.frame(
       "Asarva",
       "Jamalpur",
       "Dariapur",
+      "Bapu Nagar",
       "Asarva",
-      "Kuber nagar",
-      "Nava Vadaj",
-      "Saraspur",
-      "Danilimda",
-      "Naranpura",
       "Paldi",
-      "Dariapur"
+      "Naranpura",
+      "Nava Vadaj",
+      "Dariapur",
+      "Saraspur",
+      "Jamalpur"
     ),
   "problem" = c(
     rep("Drainage", 3),
     rep("Public lighting", 3),
-    rep("Water Supply", 3),
-    rep("Sanitation", 3)
+    rep("Sanitation", 3),
+    rep("Water Supply", 3)
   ),
   stringsAsFactors = FALSE
 )
