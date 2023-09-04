@@ -95,11 +95,11 @@ for(i in 1:nrow(wards_complaints_df)) {
   
   word_count %>%
     with(wordcloud(
-      phrase,
+      phrase,random.color = TRUE,rot.per = 0.1,min.freq = 2,
       Freq,
       random.order = TRUE,
       colors = pal,
-      scale = c(2,0.5),
+      scale = c(2,0.4),
       max.words = 50
     ))
   
