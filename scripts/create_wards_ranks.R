@@ -36,9 +36,14 @@ complaints_data_stats <-
       area
   )
 
+# complaints_data_stats$total_score <-
+#   complaints_data_stats$comp_per_pop * pop_weight + complaints_data_stats$comp_per_area *
+#   area_weight
+
+
 complaints_data_stats$total_score <-
-  complaints_data_stats$comp_per_pop * pop_weight + complaints_data_stats$comp_per_area *
-  area_weight
+  complaints_data_stats$comp_per_area
+
 
 # Assign a rank for each ward - category combination
 complaints_data_stats <-
@@ -77,9 +82,12 @@ zone_stats <-
       area
   )
 
+# zone_stats$total_score <-
+#   zone_stats$comp_per_pop * pop_weight + zone_stats$comp_per_area *
+#   area_weight
+
 zone_stats$total_score <-
-  zone_stats$comp_per_pop * pop_weight + zone_stats$comp_per_area *
-  area_weight
+  zone_stats$comp_per_area 
 
 # Assign a rank for each ward - category combination
 zone_stats <-
