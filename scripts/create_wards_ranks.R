@@ -29,9 +29,13 @@ complaints_data_stats <-
 
 # Calculate ranking stats
 complaints_data_stats <-
-  complaints_data_stats %>% mutate(comp_per_pop = total_complaints / POP_2022,
-                                   comp_per_area = total_complaints /
-                                     area)
+  complaints_data_stats %>% mutate(
+    pop_normalised = POP_2022 / 1000, # Normalise population col
+    comp_per_pop = total_complaints / pop_normalised,
+    comp_per_area = total_complaints /
+      area
+  )
+
 complaints_data_stats$total_score <-
   complaints_data_stats$comp_per_pop * pop_weight + complaints_data_stats$comp_per_area *
   area_weight
@@ -66,9 +70,12 @@ zone_stats <- left_join(zone_stats, zone_pop_area, by=c("zone"="Zone"))
 
 # Calculate ranking stats
 zone_stats <-
-  zone_stats %>% mutate(comp_per_pop = total_complaints / pop,
-                        comp_per_area = total_complaints /
-                          area)
+  zone_stats %>% mutate(
+    pop_normalised = pop / 100000, # Normalise population
+    comp_per_pop = total_complaints / pop_normalised,
+    comp_per_area = total_complaints /
+      area
+  )
 
 zone_stats$total_score <-
   zone_stats$comp_per_pop * pop_weight + zone_stats$comp_per_area *
