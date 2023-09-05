@@ -46,36 +46,11 @@ for(i in 1:nrow(wards_complaints_df)) {
   ward_complaints <- data_file[data_file$ward == ward_i &
                                  data_file$new_category == problem_i,]
   ward_complaints <- ward_complaints[!is.na(ward_complaints$ward),]
-  addr <- ward_complaints$cleaned_address
-  addr_phrase <-
-    stringr::str_split(addr, pattern = ",", simplify = FALSE)
   
-  # Only consider first two words from each address
-  addr_phrase_2 <- lapply(addr_phrase, function(vec)
-    vec[1:2])
-  
-  addr_phrase_2 <- addr_phrase_2 %>% unlist() %>% str_trim()
-  addr_phrase_2 <- addr_phrase_2[!addr_phrase_2 %in% c("", " ")]
-  word_count <-
-    addr_phrase_2 %>% table() %>% data.frame() %>% arrange(desc(Freq))
-  names(word_count)[1] <- "phrase"
-  word_with_numbers <-
-    word_count$phrase[grepl("^[0-9]+", x = word_count$phrase)] %>% as.character() %>% unlist()
-  word_count <-
-    word_count[!word_count$phrase %in% word_with_numbers, ]
-  word_count <-
-    word_count[!word_count$phrase %in% c(
-      "North",
-      "South",
-      "Central",
-      "East",
-      "South West",
-      "South East",
-      "West",
-      "Market",
-      stringr::str_to_title(ward_i)
-    ),]
-  
+  # Get word count
+  word_count <- get_word_count(ward_complaints$cleaned_address)
+  word_count <- word_count[!word_count$phrase %in% stringr::str_to_title(ward_i),]
+
   # Updating the word count data frame
   word_count$ward <- ward_i
   word_count$new_category <- problem_i

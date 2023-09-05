@@ -45,3 +45,36 @@ ward_numbers <- data.frame(
 
 ward_numbers$ward <-
   stringr::str_trim(str_to_lower(ward_numbers$ward))
+
+get_word_count <- function(complaint_address){
+  addr <- complaint_address
+  addr_phrase <-
+    stringr::str_split(addr, pattern = ",", simplify = FALSE)
+  
+  # Only consider first two words from each address
+  addr_phrase_2 <- lapply(addr_phrase, function(vec)
+    vec[1:2])
+  
+  addr_phrase_2 <- addr_phrase_2 %>% unlist() %>% str_trim()
+  addr_phrase_2 <- addr_phrase_2[!addr_phrase_2 %in% c("", " ")]
+  word_count <-
+    addr_phrase_2 %>% table() %>% data.frame() %>% arrange(desc(Freq))
+  names(word_count)[1] <- "phrase"
+  word_with_numbers <-
+    word_count$phrase[grepl("^[0-9]+", x = word_count$phrase)] %>% as.character() %>% unlist()
+  word_count <-
+    word_count[!word_count$phrase %in% word_with_numbers, ]
+  word_count <-
+    word_count[!word_count$phrase %in% c(
+      "North",
+      "South",
+      "Central",
+      "East",
+      "South West",
+      "South East",
+      "West",
+      "Market"
+    ),]
+
+  return(word_count)
+}
