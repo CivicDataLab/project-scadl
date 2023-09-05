@@ -14,6 +14,18 @@
 7. After running the [create_complaints_dataset.R](../scripts/create_complaints_dataset.R), the data folder will have three csv files - `raw_data_sheet`, `processed_data_sheet` & `appended_data_sheet`
 8. Upload the `appended_data_sheet` on google drive in the weekly analysis folder
 
+## Steps to process overall word counts
+
+Two word count csv files are needed as per the addresses given in the weekly complaints file:
+
+1. `Overall` - This file contains word counts for selected complaint categories but across all wards.
+2. `For selected wards` - This file contains word counts for selected categories and selected wards. 
+
+To generate `Overall` word counts, run the script [highlight_complaint_areas.R](../scripts/highlight_complaint_areas.R). This will create a csv file `overall_word_counts`. This file will be uploaded on google drive in the weekly analysis folder.
+
+The word count file for selected wards is generated using the [wordmap.R](../scripts/wordmap.R) script. This will create a csv file `word_counts.csv`. This file will be uploaded on google drive in the weekly analysis folder.
+
+
 ## Steps to calculate ward ranks from complaints dataset
 
 1. Run [create_ward_ranks.R](../scripts/create_ward_ranks.R)
