@@ -3,7 +3,7 @@
 # Will be updated every week
 
 raw_data_url <-
-  "https://docs.google.com/spreadsheets/d/176tC3nh-iJsEqTfNrJR5KF_tH_Xce53IVv4SJLg0YwA/edit"
+  "https://docs.google.com/spreadsheets/d/13VqUDm6GWUAFdTBdWM_hmlcMnJqINQbm2VPml5D4XYM/edit"
 
 # This is the latest date on which the data was shared
 data_shared_on <- "11092023"
