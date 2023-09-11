@@ -51,6 +51,15 @@ complaints_data_stats <-
   group_by(new_category) %>% 
   mutate(ward_rank = order(order(total_score,decreasing = TRUE)))
 
+# Rank complaint category ranks within each ward
+complaints_data_stats <-
+  complaints_data_stats %>% 
+  group_by(ward) %>% 
+  mutate(ward_category_rank = order(order(total_complaints,decreasing = TRUE)))
+
+complaints_data_stats <-
+  complaints_data_stats %>% arrange(ward, ward_category_rank)
+
 
 # Weekly ward rank file path 
 ward_ranks_file_path <-
