@@ -29,6 +29,11 @@ if(!file.exists(raw_data_file_path)) {
 
 raw_data <- readr::read_csv(raw_data_file_path)
 
+
+# For report created on 14112023, we had to remove complaints registered on 041123 since they
+# were included in the previous report.
+# raw_data <- raw_data[!raw_data$`Registration Date` %in% "04 Nov 2023",]
+
 # Assign a primary key
 raw_data$pid <- glue::glue("{data_shared_on}_{1:nrow(raw_data)}")
 
