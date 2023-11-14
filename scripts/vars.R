@@ -3,10 +3,10 @@
 # Will be updated every week
 
 raw_data_url <-
-  "https://docs.google.com/spreadsheets/d/1l2Bc0awUxmeIRMoznA0TMYnBxbGBMjhnKHz1W3XY8OU/edit#gid=1780087333"
+  "https://docs.google.com/spreadsheets/d/1Ra8aVa3YAIXLHsZBQvFxrsXNudKyJzM3tCO-Be-FVwY/edit?usp=drive_link"
 
 # This is the latest date on which the data was shared
-data_shared_on <- "23102023"
+data_shared_on <- "16102023"
 
 # This is the date on which the previous data was shared
 previous_data_shared_on <- "16102023"
