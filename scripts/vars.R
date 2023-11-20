@@ -3,13 +3,13 @@
 # Will be updated every week
 
 raw_data_url <-
-  "https://docs.google.com/spreadsheets/d/1oxrbfGDsFEr_LnMrNY_eCpmWNbwf5oghLi2ehRGM-fM/edit#gid=180116538"
+  "https://docs.google.com/spreadsheets/d/14AomVHVq9D2srrG1HRVXVcvjmnO1clVaVI04rL30vLk/edit#gid=1880124698"
 
 # This is the latest date on which the data was shared
-data_shared_on <- "13112023"
+data_shared_on <- "20112023"
 
 # This is the date on which the previous data was shared
-previous_data_shared_on <- "06112023"
+previous_data_shared_on <- "13112023"
 
 new_categories_file_path <-
   "https://docs.google.com/spreadsheets/d/19LNgYOz4J3m41qP-3yNV_tJyWgW_vZLzqFeTYE8FhIo/edit" 
