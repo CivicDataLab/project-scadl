@@ -23,6 +23,8 @@ for (w in 1:length(all_wards)) {
   ward_word_count <-
     ward_word_count[!ward_word_count$phrase %in% stringr::str_to_title(selected_ward),]
   ward_word_count$ward <- selected_ward
+  ward_number <- ward_df$ward_number %>% unique()
+  ward_word_count$locality_ID <- paste0(ward_number,"_",1:nrow(ward_word_count))
   overall_word_count <-
     dplyr::bind_rows(overall_word_count, ward_word_count)
 }
