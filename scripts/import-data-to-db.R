@@ -1,13 +1,18 @@
 source("scripts/libraries.R")
+source("scripts/vars.R")
 
 
 # Merge all files ---------------------------------------------------------
 
-base_file_path <- "data/20112023/appended_data_sheet.csv"
-base_file <- readr::read_csv(base_file_path)
-print(glue::glue("Total Rows - Base - {nrow(base_file)}"))
+# base_file_path <- "data/20112023/appended_data_sheet.csv"
+# base_file <- readr::read_csv(base_file_path)
+# print(glue::glue("Total Rows - Base - {nrow(base_file)}"))
+# all_dates <- dir("data")
+# all_dates <- all_dates[!all_dates %in% c("archive","20112023","13112023","14082023","forDB")]
+
+base_file <- c()
 all_dates <- dir("data")
-all_dates <- all_dates[!all_dates %in% c("archive","20112023","13112023","14082023","forDB")]
+all_dates <- all_dates[!all_dates %in% c("archive","forDB","overall_word_counts_all_categories.csv")]
 
 for(i in 1:length(all_dates)){
   
@@ -20,7 +25,6 @@ for(i in 1:length(all_dates)){
 }
 
 print(glue::glue("Total Rows - {nrow(base_file)}"))
-readr::write_csv(base_file, "data/forDB/processed_25112023.csv")
 
 # To check which dates are present in the collated file
 # Create a date vector
@@ -30,23 +34,19 @@ date_vec <-
   ), " ", "2023"))
 
 date_vec <- date_vec[!date_vec %in% c("31 Sep 2023")]
-
 all_dates_file <- base_file$registration_date %>% unique()
-
 dates_not_present <- date_vec[!date_vec %in% all_dates_file]
 
+#Add current-previous week label to the dataset
+base_file$week_label <- ""
+base_file$week_label[base_file$week == "11122023"] <- "current"
+base_file$week_label[base_file$week == "04122023"] <- "previous"
 
-db_host <- "43.205.192.7"
-db_port <- 5432
-db_name <- "dvdrental"
-db_user <- "apoorv"
-db_password <- "aa-cdl"
+#Add problem subcategories (Recategorising problems)
+problem_df <-
+  googlesheets4::read_sheet(ss = new_categories_file_path, sheet = "renaming-complaint")
 
-con <- dbConnect(
-  PostgreSQL(),
-  dbname = db_name,
-  host = db_host,
-  port = db_port,
-  user = db_user,
-  password = db_password
-)
+base_file <- left_join(base_file, problem_df, by=c("new_category","problem"))
+base_file$problem_recat[is.na(base_file$problem_recat)] <- base_file$problem[is.na(base_file$problem_recat)]
+
+readr::write_csv(base_file, "data/forDB/processed_12122023.csv")
