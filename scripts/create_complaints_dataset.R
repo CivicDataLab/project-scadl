@@ -99,6 +99,17 @@ update_address <- update_address_col(data_file = raw_data_sub)
 update_address$address <- NULL
 raw_data_sub <- left_join(raw_data_sub, update_address, by="pid")
 
+# Create file for DB
+raw_data_sub$week <- data_shared_on
+raw_data_sub$week_label <- "current"
+
+#Add problem subcategories (Recategorising problems)
+problem_df <-
+  googlesheets4::read_sheet(ss = new_categories_file_path, sheet = "renaming-complaint")
+
+raw_data_sub <- left_join(raw_data_sub, problem_df, by=c("new_category","problem"))
+raw_data_sub$problem_recat[is.na(raw_data_sub$problem_recat)] <- raw_data_sub$problem[is.na(raw_data_sub$problem_recat)]
+
 # Write processed dataset
 readr::write_csv(raw_data_sub, processed_data_file_path)
 
