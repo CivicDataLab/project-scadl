@@ -2,7 +2,7 @@ import os
 import re
 import pandas as pd
 
-"Catch mappings that don't exist"
+# "Catch mappings that don't exist"
 
 
 def main(week: str):
