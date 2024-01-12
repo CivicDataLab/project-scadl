@@ -1,0 +1,44 @@
+new_category,problem,problem_recat
+Drainage,Drainage- Choking Of Line ,Choking
+Drainage,Drainage- Manhole Cover Missing,Manhole cover
+Drainage,Drainage-Other,Other
+Drainage,Drainage-Public Toilets and Urinals - Drainage Line Blockage or Choking,Public Toilet
+Water Supply,Water-No Supply,No supply
+Water Supply,Water-Leakage In Main Line,Leakage
+Water Supply,Water-low  pressure,Low pressure
+Water Supply,Water-Pollution In Supply,Pollution
+Water Supply,Water -Other,Other
+Roads,Road-Bhuva On Road,Bhuva
+Roads,Road-Other,Other
+Roads,Road-Repair Require,Repair
+Sanitation,SWM- Door-To-Door Vehicle Not Comming,D2D vehicle
+Sanitation,SWM- Cleaning Not Done,Cleaning
+Sanitation,SWM - Public Toilets and Urinals - Cleaning Out The Surroundings,Public toilets - Surroundings
+Sanitation,SWM-Cleaning Burning Of Solid Wastes,Waste Burning
+Sanitation,SWM-Spitting Or Urinating at public place,Spitting/Urinating
+Sanitation,SWM-Clearing Building Material Debris,Building debris
+Sanitation,SWM-Public Toilets and Urinals - Daily Cleaning Not Being Done,Public toilets - Cleaning
+Sanitation,SWM-Clearing off the Dead Animals,Clearing dead animals
+Sanitation,Using Inferior Quality of Plastic for Tea/Pan/Water pouch/Other Food Throwing Plastic garbage/Waste,Plastic waste
+Sanitation,SWM-Clearing off the Big Dead Animals,Clearing big dead animals
+Sanitation,Smart Toilet-Automatic Door is not working,Smart toilet - automatic door
+Sanitation,Smart Toilet-Non Availability of water ,Smart toilet - water availability
+Sanitation,Smart Toilet-Daily Cleaning not being done,Smart toilet - cleaning
+Public lighting,Streetlight-  Streetlight Is Off,Streetlight off
+Public lighting,Streetlight-Poles Have Fell Down,Streetlight pole
+Public lighting,Streetlight-Shock Observed Electric  On Streetlight,Streetlight electric shock
+Public lighting,Light & Streetlight-Other,Others
+Public lighting,Streetlight-Switched On In Day Time,Streetlight on
+Public lighting,River Front- Light not working,SRF light off
+Public lighting,River Front- Light Poles Have Fell Down,SRF light pole
+Public lighting,Light - Lights and Fans Are Not Working in Hospitals,Hospital light
+Public lighting,High Mast Light,High Mast Light
+Public lighting,River Front- Electric Shock Observed  On light-pole,SRF electric shock
+Sanitation,Spraying Off Insecticides-Powder-Swm,Spraying Off Insecticides
+Drainage,Frequent Breakdown & Blockage of Drain - Eng,Breakdown & Blockage
+Sanitation,Smart Toilet-Auto Flushing not working,Smart Toilet-Auto Flushing
+"Public lighting","Lights of Societies, Chawls and Streets Are Not Working","Societies, Chawls and Streets"
+Sanitation,"SWM-Soak Pit Cleaning",Soak Pit Cleaning
+"Public lighting",Crematorium-Furnace Not Working in CNG/ Electric Crematorium,Crematorium-Furnace Not Working
+Sanitation,"Clearing Off The Dust",Clearing Off Dust
+Drainage,"Overflowing of main line and distribution line on road - Eng",Overflow

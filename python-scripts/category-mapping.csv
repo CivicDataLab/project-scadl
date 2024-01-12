@@ -1,0 +1,66 @@
+department,problem_category,new_category
+C.N.C.D,To Capture Other Animals,CNCD
+Engineering,Water>>Engineering,Water Supply
+Engineering,Drainage>>Engineering,Drainage
+Engineering,Road,Roads
+Engineering,Footpath,Other Public Works
+Engineering,Storm Water,Other Public Works
+Engineering,Public Building,Other Public Works
+Engineering,Building>>Engineering,Other Public Works
+Estate,Advertisement,Town Planning
+Estate,Dangerous Building,Town Planning
+Estate,Encroachment,Town Planning
+Estate,TP Scheme Implementation,Town Planning
+Garden,Garden>>Garden,Public Parks
+Garden,"Traffic Circle / Central Verge, Plantation Site",Public Parks
+Garden,Tree Cutting / Trimming / Clearing,Public Parks
+Gymnasium,Tool Repairing,Amenities
+Health,Crematorium>>Health,Health
+Health,Epidemic » Polluted Water,Health
+Health,Food Safety Act » Unhygienic Related,Health
+Health,Malaria » Spraying Off Insecticides,Health
+Health,Medical Service »Hospitals/Maternity Hospitals,Health
+I.C.D.S,Creche / Day Care Centre,Health
+Library,Librarys Facility,Amenities
+Library,Readers Facility,Amenities
+Light,Streetlight,Public lighting
+Property Tax,Property Tax Related,Miscellaneous
+S.W.M,Cleaning>>SWM,Sanitation
+S.W.M,Public Toilets and Urinals,Sanitation
+S.W.M,Dead Animals,Sanitation
+S.W.M,Solid Waste,Sanitation
+Urban Health Centre,Doctors / Staff Not Available,Health
+C.N.C.D,To Capture The Wandering Dogs,CNCD
+Estate,Parking,Town Planning
+Town Planning,Unauthorised Construction,Town Planning
+S.W.M,Plastic collection,Sanitation
+C.N.C.D,To Capture stray dogs for Sterilization And Vaccin,CNCD
+Traffic Engineering,Engineering Traffic Project,Miscellaneous
+Smart Toilet SWM,Smart Toilet,Sanitation
+SRFDCL,SRF-light,Public lighting
+Health,Food Safety Act » License Related,Health
+Light Building,Light Building  AC,Miscellaneous
+Light Building,Light Building Genral,Miscellaneous
+Night Round,Night Round,Night Round
+Health,Epidemic »  Food Poisoning,Health
+CNCD-Junction,CNCD-Junction,CNCD
+Light,Light>>Hospital,Public lighting
+Swimming Pool,Water>>Swimming Pool,Amenities
+Library,Reading Materials,Amenities
+Gymnasium,Quality Of Service>>Gym,Amenities
+S.W.M,Spraying Off Insecticides,Sanitation
+Light Building,"Light Building Swim-Pool-Pump",Miscellaneous
+Swimming Pool,"Building>>Swimming Pool",Amenities
+Swimming Pool,Cleaning>>Swimming Pool,Amenities
+Light Building,Light Building Auditorium,Miscellaneous
+Gymnasium,"Non-Availability Of Staff>>Gym",Amenities
+"U.C.D","SHELTER HOUSE","U.C.D"
+"Swimming Pool",Non-Availability Of Staff>>Swimming Pool,Amenities
+"Kankaria Lakefront","Water>>KLF",Amenities
+Gymnasium,Light And Building,Amenities
+"S.W.M","Soak Pit Cleaning",Sanitation
+"Kankaria Lakefront",General,Amenities
+Light,"Light>>Crematorium",Public lighting
+Library,"Mobile Library » Irregular Route",Amenities
+"Kankaria Lakefront",Maintanance,Amenities
+"U.C.D",Mission Mangalam Cell Related,"U.C.D"
