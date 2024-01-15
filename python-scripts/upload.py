@@ -17,6 +17,7 @@ def main():
     cur = connection.cursor()
 
     # Take a backup of the db
+    # Make sure that this is a transaction so it can be rolled back if anything fails
 
     # Change previous week label to empty
     cur.execute("UPDATE complaints set week_label = '' where week_label = 'previous'")
