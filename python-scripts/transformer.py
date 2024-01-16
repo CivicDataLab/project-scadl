@@ -7,6 +7,7 @@ import pandas as pd
 
 def main(week: str):
     df = pd.read_csv(os.getcwd() + "/complaints.csv")
+    # df = pd.read_excel(os.getcwd() + "/complaints.xls")
 
     df = rename_headers(df)
     df = add_pid(df, week)
@@ -140,9 +141,11 @@ def clean_address(address: str):
         return address
     
     address = address.strip().replace("\n", " ").replace("\r", " ")
-    address.replace("Ahmedabad", "").replace("Gujarat", "").replace("India", "")
+    address = address.replace("Ahmedabad", "").replace("Gujarat", "").replace("India", "")
 
     address = re.sub("\d{6}", "", address)
+
+    address = " ".join(address.split(",") if "," in address else address.split(" ")).title()
 
     return address
 
