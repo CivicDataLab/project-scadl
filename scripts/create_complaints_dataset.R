@@ -27,7 +27,7 @@ if(!file.exists(raw_data_file_path)) {
 
 # Steps to process the data are listed in this document - https://docs.google.com/document/d/1eG79o8wpZ0Woij5iBJGThBgmYcs3Mhq4DcG2ROfOhNk/edit
 
-raw_data <- readr::read_csv(raw_data_file_path)
+raw_data <- readr::read_csv(raw_data_file_path, col_types = cols(`Registration Time`="c", `Allocation Time`="c"))
 
 
 # For report created on 14112023, we had to remove complaints registered on 041123 since they
