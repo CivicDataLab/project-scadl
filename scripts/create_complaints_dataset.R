@@ -110,6 +110,14 @@ problem_df <-
 raw_data_sub <- left_join(raw_data_sub, problem_df, by=c("new_category","problem"))
 raw_data_sub$problem_recat[is.na(raw_data_sub$problem_recat)] <- raw_data_sub$problem[is.na(raw_data_sub$problem_recat)]
 
+# Add registration_date_cols
+raw_data_sub$registration_date_two <-
+  as.Date(raw_data_sub$registration_date, format = "%d %b %Y")
+raw_data_sub$registration_month <-
+  lubridate::month(raw_data_sub$registration_date_two, label = TRUE, abbr = FALSE) %>% tolower()
+raw_data_sub$registration_month_num <-
+  lubridate::month(raw_data_sub$registration_date_two, label = FALSE)
+
 # Write processed dataset
 readr::write_csv(raw_data_sub, processed_data_file_path)
 
