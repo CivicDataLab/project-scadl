@@ -36,6 +36,8 @@ def main():
     
     cur.close()
 
+    # Take a count before entry and verify that with new data count
+
     return
 
 if __name__ == "__main__":
