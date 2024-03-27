@@ -2,7 +2,7 @@ import os
 import re
 import pandas as pd
 import subprocess
-
+from datetime import datetime
 
 def main(filename: str, week: str):
     df = pd.read_excel(os.getcwd() + "/" + filename)
@@ -24,6 +24,7 @@ def main(filename: str, week: str):
     df = add_ward_number(df)
     df = add_week_and_week_label(df, week)
     df = add_problem_recat(df)
+    df = add_registraion_date_additional_info(df)
 
     df.to_csv("output_" + week + ".csv", index=False)
 
@@ -154,6 +155,27 @@ def clean_address(address: str):
     address = " ".join(address.split(",") if "," in address else address.split(" ")).title()
 
     return address
+
+def add_registraion_date_additional_info(df):
+    df['registration_date_two'] = df['registration_date'].apply(
+        lambda x: datetime.strptime(
+            x, '%d %b %Y'
+        ).strftime('%Y-%m-%d')
+    )
+
+    df['registration_month'] = df['registration_date_two'].apply(
+        lambda x: datetime.strptime(
+            x, '%Y-%m-%d'
+        ).strftime('%B').lower()
+    )
+
+    df['registration_month_num'] = df['registration_date_two'].apply(
+        lambda x: datetime.strptime(
+            x, '%Y-%m-%d'
+        ).strftime('%m')
+    )
+
+    return df
 
 
 if __name__ == "__main__":
