@@ -1,13 +1,21 @@
 import os
 import re
 import pandas as pd
+import subprocess
 
-# "Catch mappings that don't exist"
 
+def main(filename: str, week: str):
+    df = pd.read_excel(os.getcwd() + "/" + filename)
 
-def main(week: str):
-    df = pd.read_csv(os.getcwd() + "/complaints.csv")
-    # df = pd.read_excel(os.getcwd() + "/complaints.xls")
+    # Drop first 6 rows and set the 7th row as header
+    df = df.iloc[5:]
+    df.reset_index(inplace=True)
+    df = df.iloc[:, 1:]
+    df.columns = df.iloc[0]
+    df = df.iloc[1:]
+
+    # Drop all empty columns
+    df.dropna(how='all', axis=1, inplace=True)
 
     df = rename_headers(df)
     df = add_pid(df, week)
@@ -17,9 +25,7 @@ def main(week: str):
     df = add_week_and_week_label(df, week)
     df = add_problem_recat(df)
 
-    # print(df)
-
-    df.to_csv("output.csv", index=False)
+    df.to_csv("output_" + week + ".csv", index=False)
 
 
 def rename_headers(df):
@@ -151,6 +157,10 @@ def clean_address(address: str):
 
 
 if __name__ == "__main__":
-    week = str(input("Please enter the week (DDMMYYYY): "))
+    filename = [line[2:] for line in subprocess.check_output("find . -iname '*.xls'", shell=True).splitlines()]
 
-    main(week)
+    filename = filename[0].decode()
+
+    week = filename[11:-4]
+
+    main(filename, week)
